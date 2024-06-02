@@ -1,0 +1,57 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login System</title>
+  </head>
+  <body data-bs-theme="dark">
+
+    <nav class="navbar bg-transparent d-none">
+      <div class="container">
+        <a class="navbar-brand text-white">SMART LOGIN</a>
+        <button class="btn btn-outline-warning ms-auto" type="submit">Logout</button>
+      </div>
+    </nav>
+
+    <main id="mainContent">
+      <div class="container mt-4">
+
+        <div id="login-content" class="w-75 mx-auto p-5 text-center">
+          <h1 class="mb-4">Smart Login System</h1>
+          <form class="login-form">
+            <input id="loginEmail" type="email" class="form-control mb-3" id="formGroupExampleInput" placeholder="Enter your email">
+            <input id="loginPass" type="password" class="form-control mb-3" id="formGroupExampleInput2" placeholder="Enter your password">
+            <div id="login-message"></div>
+            <button id="login" class="btn btn-outline-info w-100 mt-3">Login</button>
+          </form>
+          <p class="text-white">Don’t have an account? <a href="#signup-content" class="text-decoration-none">Sign Up</a></p>
+        </div>
+
+        <div id="signup-content" class="w-75 mx-auto p-5 text-center d-none">
+          <h1 class="mb-4">Smart Login System</h1>
+          <form class="signup-form">
+            <input type="text" class="form-control mb-3" placeholder="Enter your name">
+            <input type="email" class="form-control mb-3" placeholder="Enter your email">
+            <input type="password" class="form-control mb-3" placeholder="Enter your password">
+            <div id="signup-message"></div>
+            <button id="signup" class="btn btn-outline-info w-100 mt-3">Sign Up</button>
+          </form>
+          <p class="text-white">You have an account? <a href="index.html" class="text-decoration-none">Sign in</a></p>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-center h-50">
+          <div class="logged-in w-75 mx-auto p-5 text-center d-none">
+
+          </div>
+        </div>
+
+      </div>
+    </main>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
