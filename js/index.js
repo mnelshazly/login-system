@@ -49,22 +49,31 @@ function signUp() {
         displaySignupMessage(`<div class="alert alert-danger mb-0" role="alert">All inputs are required</div>`)
     
     } else {
-        if ( isEmailExist() === true) {
+
+        if (userNameInput.classList.contains("is-valid") && userEmailInput.classList.contains("is-valid") && userPasswordInput.classList.contains("is-valid")) {
+
+            if ( isEmailExist() === true) {
             
-            displaySignupMessage(`<div class="alert alert-danger mb-0" role="alert">Email already exist</div>`);
+                displaySignupMessage(`<div class="alert alert-danger mb-0" role="alert">Email already exist</div>`);
+    
+            } else {
+    
+                var user = {
+                    username: userNameInput.value,
+                    email: userEmailInput.value.toLowerCase(),
+                    password: userPasswordInput.value
+                }
+                usersList.push(user);
+                localStorage.setItem("users", JSON.stringify(usersList));            
+                displaySignupMessage(`<div class="alert alert-info" role="alert">Your account has been created successfully, you will be redirected to the login page in 5 seconds </div>`);
+                setTimeout(displayLoginContent, 5000);
+            }
 
         } else {
-
-            var user = {
-                username: userNameInput.value,
-                email: userEmailInput.value.toLowerCase(),
-                password: userPasswordInput.value
-            }
-            usersList.push(user);
-            localStorage.setItem("users", JSON.stringify(usersList));            
-            displaySignupMessage(`<div class="alert alert-info" role="alert">Your account has been created successfully, you will be redirected to the login page in 5 seconds </div>`);
-            setTimeout(displayLoginContent, 5000);
+            alert("Invalid Input: \nName must contain at least 4 charcters. \nEmail must be valid. \nPassword must be at lease 6 charcters.");
         }
+
+        
     }
 }
 
@@ -153,6 +162,11 @@ function displaySignupContent () {
     signupContent.classList.remove("d-none");
     clearLoginForm();
     loginPass.nextElementSibling.classList.add('d-none');
+
+    userNameInput.classList.remove("is-valid", "is-invalid");
+    userEmailInput.classList.remove("is-valid", "is-invalid");
+    userPasswordInput.classList.remove("is-valid", "is-invalid");
+
 }
 
 function displayLoginContent () {
@@ -180,3 +194,39 @@ function clearSignupForm() {
     userEmailInput.value = null;
     userPasswordInput.value = null;
 }
+
+var regex = {
+    userName : /^[a-zA-Z0-9_]{4,}$/,
+    userEmail : /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+    userPassword: /^[a-zA-Z0-9_]{6,}$/
+}
+
+userNameInput.addEventListener("input", function(e){
+    if (regex.userName.test(e.target.value)) {
+        e.target.classList.add("is-valid");
+        e.target.classList.remove("is-invalid");
+    } else {
+        e.target.classList.add("is-invalid");
+        e.target.classList.remove("is-valid");
+    }
+});
+
+userEmailInput.addEventListener("input", function(e){
+    if (regex.userEmail.test(e.target.value)) {
+        e.target.classList.add("is-valid");
+        e.target.classList.remove("is-invalid");
+    } else {
+        e.target.classList.add("is-invalid");
+        e.target.classList.remove("is-valid");
+    }
+});
+
+userPasswordInput.addEventListener("input", function(e){
+    if (regex.userPassword.test(e.target.value)) {
+        e.target.classList.add("is-valid");
+        e.target.classList.remove("is-invalid");
+    } else {
+        e.target.classList.add("is-invalid");
+        e.target.classList.remove("is-valid");
+    }
+});
