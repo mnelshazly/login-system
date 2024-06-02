@@ -183,6 +183,7 @@ function displayUserContent() {
     loggedInContent.classList.remove("d-none");
     nav.classList.remove("d-none"); 
     loginContent.classList.add("d-none");
+    loginPass.nextElementSibling.classList.add("d-none");
 }
 
 function clearLoginForm() {
