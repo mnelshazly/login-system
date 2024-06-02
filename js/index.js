@@ -70,7 +70,8 @@ function signUp() {
             }
 
         } else {
-            alert("Invalid Input: \nName must contain at least 4 charcters. \nEmail must be valid. \nPassword must be at lease 6 charcters.");
+
+            displaySignupMessage(`<div class="alert alert-danger mb-0" role="alert"><p class="mb-0">Name must contain at least 4 charcters.</p> <p class="mb-0">Email must be valid.</p> <p class="mb-0">Password must be at lease 6 charcters.</p></div>`);
         }
 
         
